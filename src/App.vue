@@ -1,23 +1,26 @@
 <template>
-  <Game />
+  <div id="app">
+    <DashBoard />
+  </div>
 </template>
 
-
 <script>
-import Game from '@/components/Game'
+import DashBoard from "./containers/DashBoard";
+
 export default {
-  name: 'App',
-  components: { Game }
-}
+  components: {
+    DashBoard
+  }
+};
 </script>
 
-
 <style lang="scss">
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+#app {
+  background-color: #f1ecec;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>
