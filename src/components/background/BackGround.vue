@@ -30,7 +30,6 @@ export default {};
   content: "";
   width: 100%;
   height: 100%;
-  background-color: rgba(245, 255, 246, 0.5);
   position: absolute;
   z-index: 1001;
 }
