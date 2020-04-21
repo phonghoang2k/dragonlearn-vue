@@ -1,36 +1,25 @@
 import Phaser from 'phaser';
-import tree from '../assets/tree.png';
-import bug from '../assets/bug-up.png';
-import ok from '../assets/ok.png';
-import ok_red from '../assets/ok-red.png';
-import ok_green from '../assets/ok-green.png';
 
 export default class Scene1 extends Phaser.Scene {
     constructor() {
         super({ key: "Scene1" });
         this.isRun = false;
         this.answer = 'UP';
+        this.objectName = 'bug';
+        this.backgroundElement = 'tree';
+        this.question = 'Which way is the bug going?';
     }
-
-    preload() {
-        this.load.image('ok', ok);
-        this.load.image('ok-red', ok_red);
-        this.load.image('ok-green', ok_green);
-        this.load.image('tree', tree);
-        this.load.image('bug', bug);
-    }
-
-
     create() {
         this.add.image(0, 0, 'background');
-        this.add.image(300, 300, 'tree');
+        this.add.image(300, 300, this.backgroundElement);
         if (this.answer == 'UP') {
-            this.object = this.add.image(295, 500, 'bug');
+            this.object = this.add.image(295, 500, this.objectName);
         } else {
-            this.object = this.add.image(295, 100, 'bug');
+            this.object = this.add.image(295, 100, this.objectName);
         }
         this.initText();
         this.initButton();
+        this.initScoreBoard();
 
 
     }
@@ -41,7 +30,7 @@ export default class Scene1 extends Phaser.Scene {
         }
         if (this.object.y == 300) {
             this.setRun(false);
-            this.setObjectVisible(true, this.up, this.down, this.UpBtn, this.DownBtn);
+            this.setObjectVisible(true, this.up, this.down, this.upBtn, this.downBtn);
         }
 
         if (this.object.y < 40) {
@@ -81,7 +70,7 @@ export default class Scene1 extends Phaser.Scene {
     }
 
     initText() {
-        this.question = this.add.text(500, 230, "Which way is the object going?", { color: '#000000', font: 'bold 32px Arial' })
+        this.question = this.add.text(500, 230, this.question, { color: '#000000', font: 'bold 32px Arial' })
         this.next = this.add.text(700, 300, 'Next', { color: "#6ec3e2", font: '26px Arial' });
         this.next.setInteractive().on('pointerdown', this.clickNext, this);
 
@@ -90,40 +79,47 @@ export default class Scene1 extends Phaser.Scene {
     initButton() {
         this.up = this.add.text(600, 300, "Up", { color: '#000000', font: '32px Arial' })
         this.down = this.add.text(600, 380, "Down", { color: '#000000', font: '32px Arial' })
-        this.UpBtn = this.add.sprite(800, 320, 'ok');
-        this.DownBtn = this.add.sprite(800, 400, 'ok');
-        this.setObjectVisible(false, this.up, this.down, this.UpBtn, this.DownBtn);
-        this.UpBtn.setInteractive().on('pointerdown', this.clickButtonUp, this);
-        this.DownBtn.setInteractive().on('pointerdown', this.clickButtonDown, this);
+        this.upBtn = this.add.sprite(800, 320, 'ok');
+        this.downBtn = this.add.sprite(800, 400, 'ok');
+        this.setObjectVisible(false, this.up, this.down, this.upBtn, this.downBtn);
+        this.upBtn.setInteractive().on('pointerdown', this.clickButtonUp, this);
+        this.downBtn.setInteractive().on('pointerdown', this.clickButtonDown, this);
+    }
+
+    initScoreBoard() {
+        this.back = this.add.text(50, 20, "< Back", { color: '#6196FF', font: '26px Arial' });
+        this.back.setInteractive().on('pointerdown', () => {
+            window.location.href = '/geometry'
+        })
     }
 
     clickButtonUp() {
         if (this.answer == 'UP') {
-            this.UpBtn.setTexture('ok-green');
+            this.upBtn.setTexture('ok-green');
             setTimeout(() => {
-                this.UpBtn.setTexture('ok');
-                this.destroyObject(this.DownBtn, this.UpBtn, this.down);
+                this.upBtn.setTexture('ok');
+                this.destroyObject(this.downBtn, this.upBtn, this.down);
                 this.setRun(true);
             }, 1000);
 
         } else {
-            this.UpBtn.setTexture('ok-red');
-            setTimeout(() => this.UpBtn.setTexture('ok'), 1000);
+            this.upBtn.setTexture('ok-red');
+            setTimeout(() => this.upBtn.setTexture('ok'), 1000);
         }
     }
 
 
     clickButtonDown() {
         if (this.answer == 'DOWN') {
-            this.UpBtn.setTexture('ok-green');
+            this.upBtn.setTexture('ok-green');
             setTimeout(() => {
-                this.DownBtn.setTexture('ok');
-                this.destroyObject(this.DownBtn, this.UpBtn, this.up);
+                this.downBtn.setTexture('ok');
+                this.destroyObject(this.downBtn, this.upBtn, this.up);
                 this.setRun(true);
             }, 1000);
         } else {
-            this.DownBtn.setTexture('ok-red');
-            setTimeout(() => this.DownBtn.setTexture('ok'), 1000);
+            this.downBtn.setTexture('ok-red');
+            setTimeout(() => this.downBtn.setTexture('ok'), 1000);
         }
     }
 
