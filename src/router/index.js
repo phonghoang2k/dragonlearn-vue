@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MoveObjectsUpOrDown2 from "../containers/moveobjectupordown2/MoveObjectsUpOrDown"
 import IdentifyTheDirection from '../containers/identifythedirection/IdentifyTheDirection.vue'
+import MoveTheObjectUpOrDown from '../containers/moveobjectupordown/moveobjectupordown.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ const router = new Router({
       path: "/identify-the-direction-up-or-down",
       component: IdentifyTheDirection
     },
+   {
+      path: "/move-the-object-up-or-down",
+      component: MoveTheObjectUpOrDown
+    },
+    
     {
       path: "/measurement", component: null
     },

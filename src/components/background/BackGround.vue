@@ -13,7 +13,7 @@ export default {};
   width: 100vw;
   height: 100vh;
 
-  background-image: url(https://c8.alamy.com/comp/T9DNRE/artificial-intelligence-ai-and-machine-learning-technology-website-banner-or-background-T9DNRE.jpg);
+  background-image: url(https://content.dragonlearn.in/fp/97/fat_player/student/grad-f07e854ce64f9aee2db7bd67146ff0e4800feeed40c8f7116fcb3b6a048deb64.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1000;
