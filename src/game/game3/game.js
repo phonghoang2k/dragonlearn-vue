@@ -1,8 +1,8 @@
 import Phaser from 'phaser'
 import Scene3_game3 from './scenes/Scene3_game3'
-import Scene4_game3 from './scenes/Scene4_game3'
-import SliderPlugin from 'phaser3-rex-plugins/plugins/slider-plugin.js';
-import Slider from 'phaser3-rex-plugins/plugins/slider.js';
+import Start_game3 from './scenes/Start_game3'
+
+import 'phaser'
 
 function launch(containerId) {
   return new Phaser.Game({
@@ -11,7 +11,7 @@ function launch(containerId) {
     height: 600,
     backgroundColor: "#ffffff",
     parent: containerId, 
-    scene: [Scene3_game3]
+    scene: [Start_game3,Scene3_game3]
   })
 }
 

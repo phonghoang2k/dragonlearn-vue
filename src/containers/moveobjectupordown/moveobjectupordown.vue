@@ -1,7 +1,7 @@
 <template>
   <BackGround>
     <div :id="containerId" v-if="downloaded" />
-    <div class="placeholder" v-else>Downloading ...</div>
+    <div class="placeholder" v-else>Downloading ...</div>   
   </BackGround>
 </template>
 
@@ -9,6 +9,7 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import BackGround from "../../components/background/BackGround";
+
 export default {
   components: {
     BackGround,
