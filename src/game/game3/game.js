@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import Scene3_game3 from './scenes/Scene3_game3'
 import Start_game3 from './scenes/Start_game3'
-
+import Scene4_game3 from './scenes/Scene4_game3'
 import 'phaser'
 
 function launch(containerId) {
@@ -11,7 +11,8 @@ function launch(containerId) {
     height: 600,
     backgroundColor: "#ffffff",
     parent: containerId, 
-    scene: [Start_game3,Scene3_game3]
+    scene: [Start_game3,Scene3_game3,Scene4_game3]
+   // scene:[Scene4_game3]
   })
 }
 

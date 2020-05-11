@@ -89,7 +89,7 @@ export default class Scene1 extends Phaser.Scene {
     initScoreBoard() {
         this.back = this.add.text(50, 20, "< Back", { color: '#6196FF', font: '26px Arial' });
         this.back.setInteractive().on('pointerdown', () => {
-            window.location.href = '/geometry'
+            window.location.href = '#/geometry'
         })
     }
 
